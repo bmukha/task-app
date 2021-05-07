@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Overview from "./components/Overview";
+import uniqid from "uniqid";
 class App extends Component {
   constructor(props) {
     super(props);
@@ -14,7 +15,13 @@ class App extends Component {
     const textField = document.getElementById("text-field");
     if (textField.value) {
       this.setState({
-        tasks: [...this.state.tasks, textField.value],
+        tasks: [
+          ...this.state.tasks,
+          {
+            text: textField.value,
+            id: uniqid(),
+          },
+        ],
       });
       textField.value = "";
     }

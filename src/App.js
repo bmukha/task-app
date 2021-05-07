@@ -4,7 +4,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      tasks: [],
+      tasks: [1, 2],
     };
 
     this.onClick = this.onClick.bind(this);
@@ -12,7 +12,7 @@ class App extends Component {
 
   onClick() {
     this.setState({
-      tasks: [...this.state.tasks, "zzz"]
+      tasks: [...this.state.tasks, this.state.tasks[this.state.tasks.length - 1] + 1]
     })
   }
 

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Overview from "./components/Overview"
+import Overview from "./components/Overview";
 class App extends Component {
   constructor(props) {
     super(props);
@@ -11,18 +11,22 @@ class App extends Component {
   }
 
   onClick() {
-    this.setState({
-      tasks: [...this.state.tasks, this.state.tasks[this.state.tasks.length - 1] + 1]
-    })
+    const textField = document.getElementById("text-field");
+    if (textField.value) {
+      this.setState({
+        tasks: [...this.state.tasks, textField.value],
+      });
+      textField.value = "";
+    }
   }
-
 
   render() {
     return (
       <div className="App">
-        <button onClick = {this.onClick}>Click</button>
+        <input type="text" id="text-field"></input>
+        <button onClick={this.onClick}>Click</button>
         <h1>It works!</h1>
-        <Overview tasks={this.state.tasks}/>
+        <Overview tasks={this.state.tasks} />
       </div>
     );
   }

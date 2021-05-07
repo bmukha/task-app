@@ -6,12 +6,23 @@ class App extends Component {
     this.state = {
       tasks: [],
     };
+
+    this.onClick = this.onClick.bind(this);
   }
+
+  onClick() {
+    this.setState({
+      tasks: [...this.state.tasks, "zzz"]
+    })
+  }
+
+
   render() {
     return (
       <div className="App">
+        <button onClick = {this.onClick}>Click</button>
         <h1>It works!</h1>
-        <Overview item="fuck you"/>
+        <Overview tasks={this.state.tasks}/>
       </div>
     );
   }
